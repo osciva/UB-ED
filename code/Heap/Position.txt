@@ -1,0 +1,27 @@
+int pos = this->heap_size; 
+
+
+
+  Position<Element> node(ele); 
+
+
+
+  this->data.insert(this->data.begin() + pos, node); 
+
+
+
+  while (pos > 0 && 
+
+        (this->data[pos].getKey() < this->data[(pos -1)/2].getKey()) )
+
+  {      
+
+      swap(this->data[pos], this->data[((pos -1)/2)]);
+
+      pos = (pos -1 ) / 2; 
+
+  }   
+
+
+
+  this->heap_size++;

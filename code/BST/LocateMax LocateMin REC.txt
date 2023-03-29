@@ -1,0 +1,32 @@
+6. (2.5p) Partint del TAD BinarySearchTree (arbre de cerca binària), implementeu en
+C++ un nou mètode públic anomenat locateMaxMin per aquest TAD que calculi quins
+són els elements màxim i mínim a l’arbre de cerca binària a partir de les funcions
+recursives locateMax i locateMin. S’han d’implementar en aquest exercici les tres
+funcions. A continuació teniu un exemple de com es crida la funció. I també teniu la
+definició del TAD Position i del TAD BinarySearchTree. 
+
+
+
+template <class Element>
+void BinarySearchTree<Element>::locateMaxMin(int& max, int & min){
+
+ max = this->locateMax(this->root_node);
+ min = this->locateMin(this->root_node);
+}
+template <class Element>
+int BinarySearchTree<Element>::locateMin(Position<Element>* p)
+{
+ int val;
+
+ if (p->left() != NULL) val = locateMin(p->left());
+ else val = p->getElement();
+ return val;
+
+}
+template <class Element>
+int BinarySearchTree<Element>::locateMax(Position<Element>* p)
+{
+ if (p->right() != NULL) return locateMax(p->right());
+ else return p->getElement();
+
+}

@@ -1,0 +1,21 @@
+void HashMap::put(int key, int value) {
+
+   int hash = key%TABLE_SIZE;
+
+   while (table[hash] != NULL && table[hash]->getKey() != key)
+
+   {  // HASH SIMPLE 
+
+        hash = (hash + 1) % TABLE_SIZE;  // rehashing
+
+
+
+   }
+
+
+
+   table[hash] = new HashEntry(key, value);
+
+   num_elements++; 
+
+}  

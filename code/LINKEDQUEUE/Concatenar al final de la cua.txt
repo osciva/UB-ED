@@ -1,0 +1,33 @@
+1. (1 p) Partim d’una cua enllaçada (LinkedQueue) amb una representació amb enllaços simples
+(SingleNode). Aquesta LinkedQueue té un punter al primer element de la cua anomenat head i
+un punter al darrer element de la cua anomenat rear. Implementeu el mètode de la classe
+LinkedQueue anomenat void concatena (LinkedQueue &a), que permet concatenar tots els
+elements de la LinkedQueue a al final de la cua. La LinkedQueue a no es modifica durant el
+procés de concatenació. L’especificació de la classe SingleNode és la següent:´
+
+
+class SingleNode
+{ private:
+ char element;
+ Node *next;
+ public:
+ Node(char e);
+ ~Node();
+ const char & getElement() const;
+ Node * getNext()const;
+ void setNext(Node * elem);
+};
+Es demana que la implementació tingui un cost O(1). Justifica la teva codificació amb dibuixos, pas
+a pas.
+
+
+
+void LinkedQueue::concatena(LinkedQueue &a const)
+{
+if (a.empty()) throw new out_of_range(“Emtpy queue”);
+else
+{
+this->rear->setNext(a.head);
+this->rear = a.rear;
+}
+}

@@ -1,0 +1,39 @@
+Text de la pregunta
+Partint d’una LinkedQueue d’enters amb una representació amb enllaços dobles
+(DoubleNode) i amb capçaleres (dos sentinelles, un al davant i un al darrera). La
+LinkedQueue que té un punter al primer element de la cua anomenat first i un punter
+al darrer element de la cua anomenat last i una variable de tipus integer
+anomenada num_elements per controlar el nombre d’elements a dins del TAD.
+Implementeu el mètode, removePenultimate(), de la classe LinkedQueue que
+elimina el penúltim element de la cua (SENSE USAR LES OPERACIONS DEL
+TAD, USANT LES OPERACIONS DE DoubleNode). L’especificació de la classe
+DoubleNode està definida a sota. Quines excepcions has controlat? Per exemple si
+la LinkedQueue conté els elements: [1,2,3,4,5], després de cridar a la funció
+removePenultimate(), la LinkedQueue queda amb els elements: [1,2,3,5]. Recordeu
+que no sempre ha d’estar la LinkedQueue plena i caldrà llençar les excepcions
+oportunes.
+És important identar el codi (en el campus virtual per identar heu de posar espais
+en blanc, deixeu un mínim de 3 espais en blanc cada cop que identeu).
+
+void LinkedQueue::removePenultimate(){
+if( this->num_elements < 2) //per poder eliminar el penúltim, necessitem 2 elements com
+mínim
+throw out_of_range("La Queue només conte 1 element!!");
+else{
+DoubleNode* tmp = last->getPrev()->getPrev();
+if( this->num_elements == 2){
+first->setNext(last->getPrev());
+first->getNext()->setPrev(nullptr);
+}
+else{
+tmp->getPrev()->setNext(tmp->getNext());
+tmp->getNext()->setPrev(tmp->getPrev());
+}
+num_elements--;
+delete tmp;
+}
+}
+
+//Quines excepcions has controlat?
+He controlat el tamany de la queue, per exemple si tinguesim només 1 element a la Queue,
+aleshores no podríem eliminar el penúltim element ja que només en tenim 1.

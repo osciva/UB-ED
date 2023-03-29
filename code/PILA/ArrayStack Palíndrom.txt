@@ -1,0 +1,52 @@
+5. (2p) Partint d’una ArrayStack<char> pila que guarda els caràcters d’una paraula. Escriu un
+mètode en C++ que indiqui si aquesta paraula és un palíndrom. L’especificació de la pila és la
+següent:
+template <class E>
+class ArrayStack {
+public:
+ArrayStack();
+int size() const;
+bool empty() const;
+const E& top() const;
+void push(const E& e);
+void pop();
+};
+Noteu que la pila no disposa de constructor còpia. No es pot usar cap altra estructura de dades,
+només piles. La pila d’entrada ha de quedar intacta després de comprovar si el seu contingut és un
+palíndrom.
+
+
+
+
+bool esPalindrom(ArrayStack<char> &pila)
+{
+ ArrayStack<char> pila2 = ArrayStack<char>();
+ ArrayStack<char> pila3 = ArrayStack<char>();
+ ArrayStack<char> pila_aux = ArrayStack<char>();
+
+ bool iguals = true;
+
+ while (not pila.empty()){
+ pila2.push(pila.top());
+ pila3.push(pila.top());
+ pila.pop();
+ }
+
+ while (!pila2.empty())
+ {
+ pila.push(pila2.top());
+ pila_aux.push(pila2.top());
+ pila2.pop();
+ }
+
+ while (!pila_aux.empty() and !pila3.empty() and iguals)
+ {
+ if (pila_aux.top() != pila3.top() ) iguals = false;
+ else
+ {
+ pila_aux.pop();
+ pila3.pop();
+ }
+ }
+ return iguals;
+}

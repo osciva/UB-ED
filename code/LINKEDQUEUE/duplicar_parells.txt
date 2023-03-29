@@ -1,0 +1,30 @@
+2. (1.25p) (30 min) Partint d’una LinkedQueue d’enters amb una representació amb enllaços
+simples que té un punter al primer element de la cua anomenat first i un punter al darrer
+element de la cua anomenat last. Implementeu un nou mètode a la classe LinkedQueue
+que dupliqui tots els elements parells de la LinkedQueue (sense usar les operacions del TAD
+LinkedQueue, usant les operacions de SingleNode). L’especificació de la classe SingleNode
+està definida a sota. Quines excepcions has controlat? A continuació teniu un exemple de
+LinkedQueue abans i després de cridar a la funció. 
+
+
+void LinkedQueue::duplicaParells()
+{
+
+if (first == nullptr){ throw CuaBuidaException();} // llenceu qualsevol excepció
+else
+{
+SingleNode * temp = first;
+while(temp != nullptr)
+{
+if (temp->getElement()%2 == 0) // significa que és parell
+{
+SingleNode * nou = new SingleNode (tmp->getElement());
+nou->setNext(temp->getNext());
+temp->setNext(nou);
+if (last == temp) { last = nou; }
+temp = nou->getNext();
+}
+else { temp = temp->getNext(); }
+}
+}
+}

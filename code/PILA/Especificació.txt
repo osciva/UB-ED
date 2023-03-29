@@ -1,0 +1,20 @@
+2. (0.5p) Del TAD Stack, definiu la seva especificació, tot indicant quins mètodes són constructors,
+destructors, modificadors i consultors. Definiu l’especificació en C++ , tal i com quedaria al .h amb
+una representació amb arrays.
+Class Stack{
+public:
+Stack (int size); // constructor
+˜Stack() ; // Destructor
+// Consultors
+int size () const;
+bool empty() const;
+bool full () const;
+Element & top();
+// Modificadors
+void push(Element & e);
+void pop();
+private:
+Element [] array ;
+int mida;
+int top_pos;
+};

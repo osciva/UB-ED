@@ -1,0 +1,26 @@
+1. Partim d’una cua enllaçada (LinkedQueue) amb una representació amb enllaços simples
+(SingleNode). Aquesta LinkedQueue té un punter al primer element de la cua anomenat
+first i un punter al darrer element de la cua anomenat rear. Implementeu el mètode de
+la classe LinkedQueue anomenat void priorityLast(), que permet moure el darrer
+element de la cua a la primera posició de la LinkedQueue. L’especificació de la classe
+SingleNode és la següent: 
+
+
+1. void LinkedQueue::priorityLast()
+2. {
+3. If (this->empty() && this->size() < 3) throw out_of_range("LinkedQueue exception");
+ Ó if (this->first == null) o (this->rear = null ) // les dije en el examen que no tenia size()
+4. else
+5. {
+6. Node<Element> * tmp;
+7. tmp = first; // guarda a tmp una adreça
+8. while (tmp->getNext()!= rear) //Bucle per buscar la posició pel tmp
+ ó while (tmp->getNext()->getNext() != null {
+ tmp = tmp->getNext();
+9. }
+10. rear->setNext(first); o tmp->getNext()->setNext(first);// moure punter a
+11. first = rear o first = tmp->getNext() // moure punter b
+12. rear = tmp; // moure punter c
+13. tmp->setNext(null); // moure punter d
+14. }
+15. }

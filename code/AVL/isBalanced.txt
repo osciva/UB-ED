@@ -1,0 +1,22 @@
+class Solution {
+public:
+    bool isBalanced(TreeNode* root) {
+        if(root==nullptr){
+            return true;
+        }        
+        return (calculaBF(root) < 2 && calculaBF(root) > -2) and isBalanced(root->left) and isBalanced(root->right);
+        
+    }
+    
+    int calculaBF(TreeNode* root){
+        return depthAux(root->left) - depthAux(root->right); 
+    }
+    
+    int depthAux(TreeNode* root){
+        if(root == nullptr){
+            return 0;
+        }
+        return 1 + max(depthAux(root->left), depthAux(root->right));
+        
+    }
+};

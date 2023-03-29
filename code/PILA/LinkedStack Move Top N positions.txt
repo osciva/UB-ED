@@ -1,0 +1,21 @@
+3. (2 p) Partint d’una STACK amb una representació amb enllaços simples que té un punter al top de
+la pila anomenat first. Implementeu una funció que desplaça el node que hi ha al top n posicions
+a la pila (sense usar les operacions del TAD pila), el nou top serà el node següent a l’anterior top.
+Assumiu que els nodes (SingleNode) tenen un punter public next. S’aconsella que useu dibuixos
+per justificar la vostra codificació. Quines excepcions has controlat?
+
+void LinkedStack::moveTopNPositions(int n)
+{
+SingleNode * aux, * temp; aux= first; temp = aux;
+if (first != null)
+{
+for (int i = 0; i< n; i++)
+{
+if (temp->next == null) throw new out_of_range(“n massa gran”);
+else temp = temp->next;
+}
+first = aux->next;
+aux->next = temp->next;
+temp->next = aux;
+} else throw new out_of_range(“Empty Stack”);
+}

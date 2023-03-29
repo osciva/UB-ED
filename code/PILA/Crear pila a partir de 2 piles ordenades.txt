@@ -1,0 +1,31 @@
+
+4. (1.25p) Donades dues PILES ordenades A i B (el mínim al top de la pila), implementa un
+mètode en C++ que a partir de les dues piles ordenades creï una nova pila ordenada
+combinant tots els elements de les dues piles anteriors. Només pots usar les operacions del
+TAD Stack. No es permet l’ús d’altres estructures de dades, només de piles.
+
+
+Stack<int> mergeSortedStacks(Stack<int> A, Stack<int> B)
+{
+Stack<int> sol;
+while (!A.empty() or !B.empty()){
+if (A.empty()) { sol.push(B.top()); B.pop(); }
+else if (B.empty()){ sol.push(A.top(); A.pop(); }
+else {
+if (A.top() >= B.top()){
+sol.push(B.top());
+B.pop();
+}
+else {
+sol.push(A.top());
+A.pop();
+}
+}
+}
+// Ara tenim la pila sol ordenada de major a menor, cal invertir-la
+if (!sol.empty())
+{
+// A s’ha quedat buida i per tant podem tornar a usar-la
+while (!sol.empty()){ A.push(sol.top()); sol.pop(); }
+}
+return A;

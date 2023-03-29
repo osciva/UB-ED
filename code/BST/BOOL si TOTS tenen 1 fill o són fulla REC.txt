@@ -1,0 +1,38 @@
+
+Donat un arbre de cerca binària, es demana implementar un mètode recursiu que
+determini si l’arbre té tots els nodes (excepte les fulles) amb un únic fill. És a dir, que
+tots els nodes tenen 0 o un únic descendent. Retorna cert si tots els nodes tenen
+com a molt un únic fill, fals en cas contrari. En el cas que l’arbre estigui buit, es
+retorna fals.
+Teniu un inici del codi a la part de resposta. Hi ha línies que posa que NO es poden
+modificar, si canvieu aquestes línies no es corregirà el codi perquè esteu canviant el
+problema tal i com s'ha plantejat a l'enunciat. Recordeu que és important identar el
+codi (en el campus virtual per identar heu de posar espais en blanc, deixeu un
+mínim de 3 espais en blanc cada cop que identeu).
+
+
+template <class Element> bool BST<Element>::hasOnlyOneChild() {
+if (empty())
+return false;
+else{
+return hasOnlyOneChild (root());
+}
+}
+template <class Element> bool BST<Element>::hasOnlyOneChild(NodeTree<Element>
+* node) {
+if (node->left() != nullptr and node->right()!= nullptr)// No es pot modificar
+{
+return false;
+}
+
+else {
+if (node->isExternal())//no es pot modificar, és per aturar recursivitat
+{ return true;
+}
+if(node->hasLeft();)
+return hasOnlyOneChild (node->left());
+else{
+return hasOnlyOneChild (node->right());
+}
+}
+}

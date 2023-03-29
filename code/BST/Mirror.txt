@@ -1,0 +1,29 @@
+3. (2.5p) (60 min) Partint del TAD BinarySearchTree (arbre de cerca binària), un nou
+mètode públic anomenat mirror per aquest TAD que inverteix l’arbre com si fos un mirall.
+S’ha de fer una implementació recursiva i s’han d’implementar en aquest exercici dues
+funcions: mirror i mirrorNode. A continuació teniu un exemple de com es crida la
+funció. I també teniu la definició del TAD Position i del TAD BinarySearchTree. 
+
+
+template <class Element>
+void BinarySearchTree<Element>::mirror()
+{
+ this->mirrorNode(this->root());
+
+}
+template <class Element>
+void BinarySearchTree<Element>::mirrorNode(Position<Element> * node)
+{
+ if (!node->isExternal()) { // aquesta és la solució bona
+
+ if (node->left() != nullptr ) this->mirrorNode(node->left());
+ if (node->right() != nullptr ) this->mirrorNode(node->right());
+
+ Position<Element> * esq = node->left();
+ Position<Element> * dre = node->right();
+
+ node->setLeft(dre);
+ node->setRight(esq);
+
+ } else return;
+}

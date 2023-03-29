@@ -1,0 +1,20 @@
+1. (1.5p) Partint d’una cua (LinkedQueue) amb una representació amb enllaços dobles (DoubleNode)
+i sense capçaleres que té un punter al head i un punter al rear. Feu un swap del node del front
+amb el node del rear (no s’ha de fer swap de les dades). Assumiu que els nodes tenen un punter
+public next i un punter public prev. Justifica la teva codificació amb dibuixos, pas a pas.
+
+
+void LinkedQueue::swapHeadRear()
+{
+ DoubleNode * A, *B;
+ A = head->next ; // Següent del head
+ B = rear->prev ; // Anterior del rear
+ B->next = head; // 1. ó B->next = A->prev; rear->prev->next = head
+ A->prev = rear; // 2. ó A->prev = B->next; head->next->prev = rear
+ head->next = NULL; // 3.
+ rear->prev = NULL; // 4.
+ rear->next = A; // 5.
+ head->prev = B; // 6.
+ head = A->prev; // 7.
+ rear = B->next; // 8.
+}

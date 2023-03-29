@@ -1,0 +1,35 @@
+
+
+
+
+4. (2 p) Partim d’una STACK amb una representació amb enllaços simples que té un punter al top de
+la pila anomenat front. Implementeu el destructor de la pila utilitzant les funcions pròpies de la
+pila: size, empty, push, pop, top. A més a més, es demana que implementeu les operacions que heu
+cridat de la pila en la implementació del destructor de la pila. Assumiu que els nodes
+(SingleNode) estan definits tal i com s’especifica a l’exercici 1.
+S’aconsella que useu dibuixos per justificar la vostra codificació. Quines excepcions heu llençat en
+la vostra codificació?
+LinkedStack::~LinkedStack()
+{
+ while (!this->empty())
+ pop();
+}
+// Aquí a sota les operacions que heu cridat en el destructor
+bool LinkedStack::empty() const
+{
+ //if (!front) cout << "Empty LinkedStack " << endl;
+ return (!this->front); // this->front == nullptr
+}
+void LinkedStack::pop()
+{
+if (this->empty()) throw out_of_range("LinkedStack<>::pop(): empty
+stack");
+ else
+ {
+ Node<Element> * aux_node = front;
+ front = aux_node->getNext();
+ delete aux_node;
+ }
+ this->num_elements--;
+
+}

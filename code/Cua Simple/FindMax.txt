@@ -1,0 +1,23 @@
+5. (2p) Partint d’una Queue<int> Q, escriu un mètode en C++ que trobi el màxim element guardat
+a la cua. Només es poden usar les operacions de la cua: enqueue, dequeue, empty, etc. No es pot
+usar cap altra estructura de dades, només cues. La Queue d’entrada ha de quedar intacta després
+de buscar el màxim element de la cua.
+
+int findMax(Queue<int> &Q)
+{
+int mida = Q.size();
+int max = 0;
+if (mida == 0) throw new out_of_range(“Empty Queue”);
+else
+{
+int element = 0;
+for (int i = 0; i< mida; i++)
+{
+element = Q.front();
+Q.dequeue();
+max = (element > max) ? element: max;
+Q.enqueue(element);
+}
+}
+return max;
+}

@@ -1,0 +1,23 @@
+
+1. (1.25p) (30 min) Fes el codi de l’algorisme de HeapSort (mètode que a partir d’un vector
+d’entrada desordenat, utilitza un heap i retorna un altre vector ordenat de menor a major,
+amb els mateixos elements). A continuació teniu la definició del heap.h
+
+
+#include "heap.h"
+vector<int> heapSort(vector<int> input)
+{
+MinHeap<int> heap;
+vector<int> output;
+vector<int>::iterator it;
+for (it = input.begin(); it != input.end(); ++it)
+{
+heap.insert(*it);
+}
+//Buidem el MinHeap fent un removeMin i omplim el nou vector
+while (!heap.empty())
+{
+output.push_back(heap.removeMin());
+}
+return output;
+}

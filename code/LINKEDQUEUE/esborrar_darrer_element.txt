@@ -1,0 +1,29 @@
+
+5. (1.25p) Partint d’una LinkedQueue amb una representació amb enllaços simples que té un
+punter al primer element de la cua anomenat first i un punter al darrer element de la
+cua anomenat last. Implementeu en C++ un mètode que esborri el darrer element de la 
+LinkedQueue (sense usar les operacions del TAD LinkedQueue). Assumiu que els nodes
+(SingleNode) tenen un punter públic next. S’aconsella que useu dibuixos per justificar
+la vostra codificació. Quines excepcions has controlat?
+
+
+void LinkedQueue::deleteLastElement()
+{
+if (first==nullptr) throw new out_of_range (“La cua està buida”);
+else if (first->next == nullptr)
+{
+delete first; first = nullptr; last = nullptr;
+}
+else {
+SingleNode * auxNode = first;
+SingleNode * iterator = first->next;
+while (iterator->next != nullptr) {
+auxNode = iterator;
+iterator = iterator->next;
+}
+// Ja hem trobat el node final
+last = auxNode;
+auxNode->next = nullptr;
+delete iterator;
+}
+}
